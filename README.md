@@ -39,7 +39,8 @@ Finalmente se comparan la cantidad de código y la legibilidad de ambas solucion
 ## Estructura del proyecto
 
 ```
-ejercicio26-ordenamiento-libros/
+Actv#2-ordenamiento-libros/
+├── .gitignore
 ├── README.md
 └── src/
     └── OrdenamientoMultinivelLibros.java
@@ -56,11 +57,11 @@ ejercicio26-ordenamiento-libros/
 
 ## Cómo compilar y ejecutar
 
-Desde la carpeta raíz del proyecto (`ejercicio26-ordenamiento-libros`):
+Desde la carpeta raíz del proyecto (`Actv#2-ordenamiento-libros`):
 
 ```bash
 # Compilar
-javac src/OrdenamientoMultinivelLibros.java -d out
+javac -encoding UTF-8 src/OrdenamientoMultinivelLibros.java -d out
 
 # Ejecutar
 java -cp out OrdenamientoMultinivelLibros
@@ -69,9 +70,12 @@ java -cp out OrdenamientoMultinivelLibros
 Si no usas carpeta de salida:
 
 ```bash
-javac src/OrdenamientoMultinivelLibros.java
+javac -encoding UTF-8 src/OrdenamientoMultinivelLibros.java
 java -cp src OrdenamientoMultinivelLibros
 ```
+
+En Windows, si los acentos no se ven bien en la consola, ejecuta antes
+`chcp 65001` o usa una terminal con UTF-8.
 
 ---
 
@@ -85,22 +89,33 @@ El programa muestra:
 4. **COMPARACIÓN MANUAL vs COMPARATOR** — cantidad de código, legibilidad, complejidad temporal y espacial de ambas.
 5. **JUSTIFICACIÓN DE ATRIBUTOS** — por qué se usa autor, título y año como criterios, y por qué ISBN y páginas no se incluyen.
 
-El orden esperado para los datos de ejemplo es:
+El orden esperado para los 12 libros de ejemplo es:
 
 ```
 Andy Hunt        - The Pragmatic Programmer (1999)
+Dave Thomas      - The Pragmatic Programmer (1999)
 Eric Evans       - Domain-Driven Design (2003)
+Eric Evans       - Domain-Driven Design (2003)   <- duplicado exacto
+Erich Gamma      - Design Patterns (1994)
 Martin Fowler    - Refactoring (1999)
-Robert Martin    - Clean Code (2020)      <- mismo título, año más reciente primero
-Robert Martin    - Clean Code (2015)
-Robert Martin    - Clean Code (2008)      <- duplicados exactos
+Robert Martin    - Clean Code (2020)             <- mismo título, año más reciente primero
+robert martin    - Clean Code (2015)
+Robert Martin    - Clean Code (2008)             <- duplicados exactos
 Robert Martin    - Clean Code (2008)
 Robert Martin    - Clean Code (2008)
 Robert Sedgewick - Algorithms (2011)
-Erich Gamma      - Design Patterns (1994)
 ```
 
-*(El orden exacto de autores sigue la comparacion alfabética ignoring case.)*
+*(Los autores se comparan alfabéticamente ignorando mayúsculas y minúsculas; por eso `Robert Martin` y `robert martin` quedan juntos. Los tiempos de ejecución varían en cada corrida y no forman parte del orden esperado.)*
+
+---
+
+## Pruebas realizadas
+
+- El programa verifica el orden de las dos implementaciones con `verificarOrden`.
+- Se probaron ambas implementaciones con **500 arreglos aleatorios** de hasta 80 libros, con autores y títulos repetidos y diferencias de mayúsculas. Las dos produjeron exactamente el mismo orden.
+- Se probaron los casos límite: arreglo nulo, arreglo vacío y arreglo de un solo libro.
+- La versión manual no usa `Arrays.sort`, `Collections.sort`, `List.sort` ni `Comparator`; solo usa `System.arraycopy` para mover datos entre el arreglo y el buffer.
 
 ---
 
