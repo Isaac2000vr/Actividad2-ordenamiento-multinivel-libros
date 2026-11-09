@@ -34,7 +34,7 @@ import java.util.Comparator;
  *  - Contabilización de comparaciones e intercambios/movimientos.
  *  - Explicación de complejidad temporal.
  *
- * Autor: Estudiante - Estructuras de datos (Unidad 2)
+ * Autor: Estudiante - Estructuras de datos (Unidad 3)
  */
 public class OrdenamientoMultinivelLibros {
 
@@ -265,6 +265,7 @@ public class OrdenamientoMultinivelLibros {
         System.out.println("• Implementación manual (Merge Sort):");
         System.out.println("  - Requiere programar el algoritmo completo (divide, mezcla,");
         System.out.println("    caso base, buffer auxiliar) y escribir el criterio de");
+        System.out.println("    comparación a mano.");
         System.out.println("  - Más líneas de código, más propenso a errores, pero ofrece");
         System.out.println("    control total sobre comparaciones e intercambios.");
         System.out.println("  - Complejidad temporal: O(n log n) en todos los casos.");
